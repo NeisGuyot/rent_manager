@@ -97,4 +97,19 @@ public class ClientDao {
 		}
 	}
 
+	public int number_of_clients() throws DaoException {
+		int clients = 0;
+		try {
+			Connection connection = ConnectionManager.getConnection();
+			Statement statement =
+					connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS total FROM Client");
+			if(resultSet.next()){
+				clients = resultSet.getInt("total");
+			}
+			return clients;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
 }

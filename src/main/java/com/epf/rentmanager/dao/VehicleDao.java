@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epf.rentmanager.Exception.DaoException;
-import com.epf.rentmanager.model.Client;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 
@@ -92,6 +90,22 @@ public class VehicleDao {
 				vehicules.add(new Vehicle(id, constructeur, nb_places));
 			}
 			return  vehicules;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+
+	public int number_of_vehicules() throws DaoException {
+		int vehicules = 0;
+		try {
+			Connection connection = ConnectionManager.getConnection();
+			Statement statement =
+					connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS total FROM Vehicle");
+			if(resultSet.next()){
+				vehicules = resultSet.getInt("total");
+			}
+			return vehicules;
 		} catch (SQLException e) {
 			throw new DaoException();
 		}

@@ -53,5 +53,14 @@ public class ClientService {
 		}
 		return listClient;
 	}
-	
+
+	public int count() throws ServiceException {
+		int count;
+		try {
+			count = clientDao.number_of_clients();
+		}catch (DaoException daoException){
+			throw new ServiceException("Problème pour compter les clients");
+		}
+		return count;
+	}
 }

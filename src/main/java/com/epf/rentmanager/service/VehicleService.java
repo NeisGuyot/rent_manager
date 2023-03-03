@@ -53,5 +53,14 @@ public class VehicleService {
 		}
 		return listVehicule;
 	}
-	
+
+	public int count() throws ServiceException {
+		int count;
+		try {
+			count = vehicleDao.number_of_vehicules();
+		}catch (DaoException daoException){
+			throw new ServiceException("Problème pour compter les véhicules");
+		}
+		return count;
+	}
 }

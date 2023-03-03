@@ -2,9 +2,7 @@ package com.epf.rentmanager.service;
 
 import com.epf.rentmanager.Exception.DaoException;
 import com.epf.rentmanager.Exception.ServiceException;
-import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.ReservationDao;
-import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.model.Reservation;
 
 import java.util.List;
@@ -53,5 +51,15 @@ public class ReservationService {
             throw new ServiceException("Les reservations n'ont pas été trouvés");
         }
         return listReservation;
+    }
+
+    public int count() throws ServiceException {
+        int count;
+        try {
+            count = reservationDao.number_of_reservations();
+        }catch (DaoException daoException){
+            throw new ServiceException("Problème pour compter les reservations");
+        }
+        return count;
     }
 }

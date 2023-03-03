@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.ReservationDao;
 import org.h2.tools.DeleteDbFiles;
 
@@ -19,7 +20,7 @@ public class FillDatabase {
         try {
             DeleteDbFiles.execute("~", "RentManagerDatabase", true);
             insertWithPreparedStatement();
-            System.out.println(ReservationDao.getInstance().number_of_reservations());
+            System.out.println(ClientDao.getInstance().number_of_clients());
         } catch (SQLException e) {
             e.printStackTrace();
         }
