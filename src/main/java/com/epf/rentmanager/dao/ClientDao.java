@@ -91,7 +91,7 @@ public class ClientDao {
 			String email = resultSet.getString("email");
 			Date naissance = resultSet.getDate("naissance");
 
-			return new ArrayList<Client>();
+			return new ArrayList<Client>(); //TODO
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
