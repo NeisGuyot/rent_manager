@@ -12,6 +12,7 @@ import java.io.IOException;
 @WebServlet("/cars")
 public class VehicleListServlet extends HttpServlet {
 
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             try {
                 request.setAttribute("vehicles", VehicleService.getInstance().findAll());
@@ -19,6 +20,6 @@ public class VehicleListServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
 
-            this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicle/list.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/list.jsp").forward(request, response);
     }
 }
