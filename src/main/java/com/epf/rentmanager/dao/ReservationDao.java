@@ -1,11 +1,13 @@
 package com.epf.rentmanager.dao;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.epf.rentmanager.Exception.DaoException;
 import com.epf.rentmanager.model.Reservation;
+import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 
 public class ReservationDao {
@@ -93,14 +95,35 @@ public class ReservationDao {
 	}
 
 	public int number_of_reservations() throws DaoException {
-		int reservations;
+		int reservations = 0;
+		try {
+			Connection connection = ConnectionManager.getConnection();
+			Statement statement =
+					connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) AS total FROM Reservation");
+			if(resultSet.next()){
+				reservations = resultSet.getInt("total");
+			}
+			return reservations;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+
+	public Reservation findById(long id) throws DaoException {
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
-					connection.prepareStatement("SELECT COUNT(*) AS total FROM Reservation");
-			ResultSet resultSet = preparedStatement.executeQuery("SELECT COUNT(*) AS total FROM Reservation");
-			reservations = resultSet.getInt("total");
-			return reservations;
+					connection.prepareStatement(FIND_RESERVATIONS_QUERY);
+			preparedStatement.setLong(1, id);
+
+			ResultSet resultSet =  preparedStatement.executeQuery();
+			resultSet.next();
+			int client_id = resultSet.getInt("client_id");
+			int vehicle_id = resultSet.getInt("vehicle_id");
+			Date debut = resultSet.getDate("debut");
+			Date fin = resultSet.getDate("fin");
+			return new Reservation((int) id, client_id, vehicle_id, debut.toLocalDate(), fin.toLocalDate());
 		} catch (SQLException e) {
 			throw new DaoException();
 		}

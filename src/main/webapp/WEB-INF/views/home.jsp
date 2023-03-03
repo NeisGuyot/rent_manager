@@ -32,7 +32,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Utilisateurs</span>
-              <span class="info-box-number">${someData}</span>
+              <span class="info-box-number">${number_of_reservations}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
