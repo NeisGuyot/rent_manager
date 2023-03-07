@@ -1,7 +1,6 @@
 package com.epf.rentmanager.dao;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,23 +71,23 @@ public class ReservationDao {
 	}
 
 	public List<Reservation> findAll() throws DaoException {
-		List<Reservation> reservations = new ArrayList<Reservation>();
+		List<Reservation> reservation = new ArrayList<Reservation>();
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
 					connection.prepareStatement(FIND_RESERVATIONS_QUERY);
-			ResultSet resultSet = preparedStatement.executeQuery(FIND_RESERVATIONS_QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()){
 				int id = resultSet.getInt("id");
 				int client_id = resultSet.getInt("client_id");
-				int vehicule_id = resultSet.getInt("client_id");
+				int vehicle_id = resultSet.getInt("vehicle_id");
 				Date debut = resultSet.getDate("debut");
 				Date fin = resultSet.getDate("fin");
 
-				reservations.add(new Reservation(id, client_id, vehicule_id, debut.toLocalDate(), fin.toLocalDate()));
+				reservation.add(new Reservation(id, client_id, vehicle_id, debut.toLocalDate(), fin.toLocalDate()));
 			}
-			return  reservations;
+			return reservation;
 		} catch (SQLException e) {
 			throw new DaoException();
 		}

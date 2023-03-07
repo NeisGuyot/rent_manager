@@ -34,21 +34,25 @@
                                     <th>Action</th>
                                 </tr>
                                 <tr>
-                                    <td>1.</td>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>john.doe@epf.fr</td>
-                                    <td>
-                                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/users/details?id=1">
-                                        <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success disabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger disabled" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
+                                    <c:forEach items="${clients}" var="client">
+                                        <td>${client.id}.</td>
+                                        <td>${client.nom}</td>
+                                        <td>${client.prenom}</td>
+                                        <td>${client.mail}</td>
+                                        <!--<td>John Doe</td>-->
+                                        <td>
+                                            <a class="btn btn-primary disabled" href="users-detail.html">
+                                                <i class="fa fa-play"></i>
+                                            </a>
+                                            <a class="btn btn-success disabled" href="#">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger disabled" href="#">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
                                 </tr>
 
                                 <tr>

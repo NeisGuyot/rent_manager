@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.epf.rentmanager.Exception.DaoException;
 import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 
 public class ClientDao {
@@ -79,19 +80,23 @@ public class ClientDao {
 	}
 
 	public List<Client> findAll() throws DaoException {
+		List<Client> clients = new ArrayList<Client>();
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
 					connection.prepareStatement(FIND_CLIENTS_QUERY);
+			ResultSet resultSet = preparedStatement.executeQuery();
 
-			preparedStatement.execute();
-			ResultSet resultSet = preparedStatement.getResultSet();
-			String nom = resultSet.getString("nom");
-			String prenom = resultSet.getString("prenom");
-			String email = resultSet.getString("email");
-			Date naissance = resultSet.getDate("naissance");
+			while (resultSet.next()){
+				long client_id = resultSet.getLong("id");
+				String nom = resultSet.getString("nom");
+				String prenom = resultSet.getString("prenom");
+				String email = resultSet.getString("email");
+				Date naissance = resultSet.getDate("naissance");
 
-			return new ArrayList<Client>(); //TODO
+				clients.add(new Client(client_id, nom, prenom, email, naissance.toLocalDate()));
+			}
+			return clients;
 		} catch (SQLException e) {
 			throw new DaoException();
 		}

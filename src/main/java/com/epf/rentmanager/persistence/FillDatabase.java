@@ -20,7 +20,7 @@ public class FillDatabase {
         try {
             DeleteDbFiles.execute("~", "RentManagerDatabase", true);
             insertWithPreparedStatement();
-            System.out.println(ClientDao.getInstance().number_of_clients());
+            System.out.println(ReservationDao.getInstance().number_of_reservations());
         } catch (SQLException e) {
             e.printStackTrace();
         }

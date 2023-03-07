@@ -49,7 +49,7 @@ public class ClientService {
 		try {
 			listClient = clientDao.findAll();
 		}catch (DaoException daoException){
-			throw new ServiceException("Les client n'ont pas été trouvés");
+			throw new ServiceException("Les clients n'ont pas été trouvés");
 		}
 		return listClient;
 	}

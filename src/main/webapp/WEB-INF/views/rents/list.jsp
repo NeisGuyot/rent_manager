@@ -35,13 +35,33 @@
                                     <th>Action</th>
                                 </tr>
                                 <tr>
+                                    <c:forEach items="${reservations}" var="reservation">
+                                        <td>${reservation.id}.</td>
+                                        <td>${reservation.client_id}</td>
+                                        <td>${reservation.vehicule_id}</td>
+                                        <td>${reservation.debut}</td>
+                                        <td>${reservation.fin}</td>
+                                        <!--<td>John Doe</td>-->
+                                        <td>
+                                            <a class="btn btn-primary disabled" href="rents-detail.html">
+                                                <i class="fa fa-play"></i>
+                                            </a>
+                                            <a class="btn btn-success disabled" href="#">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger disabled" href="#">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
                                     <td>1.</td>
                                     <td>Renault Clio</td>
                                     <td>John Doe</td>
                                     <td>10/01/2019</td>
                                     <td>13/01/2019</td>
                                     <td>
-                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/cars?id=1">
+                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/rents?id=1">
                                             <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success disabled" href="#">
@@ -60,7 +80,7 @@
                                     <td>10/01/2019</td>
                                     <td>13/01/2019</td>
                                     <td>
-                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/cars?id=2">
+                                        <a class="btn btn-primary disabled" href="${pageContext.request.contextPath}/rents?id=2">
                                             <i class="fa fa-play"></i>
                                         </a>
                                         <a class="btn btn-success disabled" href="#">
