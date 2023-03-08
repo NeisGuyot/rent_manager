@@ -1,17 +1,29 @@
 package com.epf.rentmanager.servlet;
 
+import com.epf.rentmanager.Exception.ServiceException;
+import com.epf.rentmanager.model.Vehicle;
+import com.epf.rentmanager.service.VehicleService;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@WebServlet("/cars/create")
 public class VehicleCreateServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // affichage du formulaire}
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/vehicles/create.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // traitement du formulaire (appel à la méthode de sauvegarde)}
+        int nb_places = Integer.valueOf(request.getParameter("seats"));
+        String constructeur = request.getParameter("manufacturer");
+        try {
+            VehicleService.getInstance().create(new Vehicle(constructeur, nb_places));
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+        response.sendRedirect("/rentmanager/cars");
     }
 }

@@ -12,13 +12,9 @@ public class Vehicle {
         this.nb_places = nb_places;
     }
 
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "id=" + id +
-                ", constructeur='" + constructeur + '\'' +
-                ", nb_places=" + nb_places +
-                '}';
+    public Vehicle(String constructeur, int nb_places) {
+        this.constructeur = constructeur;
+        this.nb_places = nb_places;
     }
 
     public long getId() {

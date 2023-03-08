@@ -83,7 +83,7 @@ public class VehicleDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()){
-				int id = resultSet.getInt("id");
+				long id = resultSet.getLong("id");
 				String constructeur = resultSet.getString("constructeur");
 				int nb_places = resultSet.getInt("nb_places");
 

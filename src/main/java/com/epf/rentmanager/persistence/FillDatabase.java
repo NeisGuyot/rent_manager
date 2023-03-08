@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.ReservationDao;
+import com.epf.rentmanager.dao.VehicleDao;
 import org.h2.tools.DeleteDbFiles;
 
 import com.epf.rentmanager.persistence.ConnectionManager;
@@ -20,7 +21,6 @@ public class FillDatabase {
         try {
             DeleteDbFiles.execute("~", "RentManagerDatabase", true);
             insertWithPreparedStatement();
-            System.out.println(ReservationDao.getInstance().number_of_reservations());
         } catch (SQLException e) {
             e.printStackTrace();
         }
