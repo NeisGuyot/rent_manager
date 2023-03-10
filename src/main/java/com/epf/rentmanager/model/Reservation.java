@@ -19,6 +19,13 @@ public class Reservation {
         this.fin = fin;
     }
 
+    public Reservation(long client_id, int vehicule_id, LocalDate debut, LocalDate fin) {
+        this.client_id = client_id;
+        this.vehicule_id = vehicule_id;
+        this.debut = debut;
+        this.fin = fin;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +

@@ -12,6 +12,7 @@ import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.ReservationDao;
 import com.epf.rentmanager.dao.VehicleDao;
 import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
 import org.h2.tools.DeleteDbFiles;
 
@@ -24,8 +25,7 @@ public class FillDatabase {
         try {
             DeleteDbFiles.execute("~", "RentManagerDatabase", true);
             insertWithPreparedStatement();
-//            LocalDate date = LocalDate.of(1988, 5, 5);
-//            ClientService.getInstance().create(new Client("last_name", "first_name", "email",  date));
+            //ClientService.getInstance().create(new Reservation("last_name", "first_name", "email",  date));
         } catch (SQLException e) {
             e.printStackTrace();
         }
