@@ -1,0 +1,37 @@
+package com.epf.rentmanager.servlet;
+
+import com.epf.rentmanager.Exception.ServiceException;
+import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.service.ClientService;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+@WebServlet("/users/create")
+public class UtilisateurCreateServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher("/WEB-INF/views/users/create.jsp").forward(request, response);
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String last_name = request.getParameter("last_name");
+        String first_name = request.getParameter("first_name");
+        String email = request.getParameter("email");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String naissanceStr = request.getParameter("naissance");
+        LocalDate naissance = LocalDate.parse(naissanceStr, formatter);
+        try {
+            ClientService.getInstance().create(new Client(last_name, first_name, email, naissance));
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+        response.sendRedirect("/rentmanager/users");
+    }
+}

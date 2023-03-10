@@ -18,6 +18,13 @@ public class Client {
         this.naissance = naissance;
     }
 
+    public Client(String nom, String prenom, String mail, LocalDate naissance) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.mail = mail;
+        this.naissance = naissance;
+    }
+
     @Override
     public String toString() {
         return "Client{" +

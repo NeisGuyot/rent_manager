@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.epf.rentmanager.dao.ClientDao;
 import com.epf.rentmanager.dao.ReservationDao;
 import com.epf.rentmanager.dao.VehicleDao;
+import com.epf.rentmanager.model.Client;
+import com.epf.rentmanager.service.ClientService;
 import org.h2.tools.DeleteDbFiles;
 
 import com.epf.rentmanager.persistence.ConnectionManager;
@@ -21,6 +24,8 @@ public class FillDatabase {
         try {
             DeleteDbFiles.execute("~", "RentManagerDatabase", true);
             insertWithPreparedStatement();
+//            LocalDate date = LocalDate.of(1988, 5, 5);
+//            ClientService.getInstance().create(new Client("last_name", "first_name", "email",  date));
         } catch (SQLException e) {
             e.printStackTrace();
         }
