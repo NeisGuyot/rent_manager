@@ -3,6 +3,7 @@ package com.epf.rentmanager.servlet;
 import com.epf.rentmanager.Exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicle;
+import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
 
@@ -19,6 +20,13 @@ import java.time.format.DateTimeFormatter;
 public class RservationCreateServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            request.setAttribute("clients", ClientService.getInstance().findAll());
+            request.setAttribute("voitures", VehicleService.getInstance().findAll());
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+
         this.getServletContext().getRequestDispatcher("/WEB-INF/views/rents/create.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
