@@ -59,7 +59,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" onclick="validateAge()">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -85,5 +85,26 @@
         $('[data-mask]').inputmask()
     });
 </script>
+<script>
+function validateAge(){
+    var age = document.getElementById("naissance").value;
+    var dob = new Date(age);
+    var today = new Date();
+    var ageInMs = today - dob;
+    var ageInYears = Math.floor(ageInMs / 31557600000);
+    if (ageInYears < 18) {
+        alert("Vous devez avoir plus de 18 ans pour vous inscrire!");
+        return false;
+    }
+    var lastName = document.getElementById("last_name").value;
+    var firstName = document.getElementById("first_name").value;
+    if (lastName.length < 3 || firstName.length < 3) {
+        alert("Le nom et le prenom doivent comporter au moins 3 caracteres!");
+        return false;
+    }
+    return true;
+}
+</script>
+
 </body>
 </html>
