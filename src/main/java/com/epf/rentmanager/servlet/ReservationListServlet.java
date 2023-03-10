@@ -1,6 +1,7 @@
 package com.epf.rentmanager.servlet;
 
 import com.epf.rentmanager.Exception.ServiceException;
+import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
 
@@ -17,6 +18,8 @@ public class ReservationListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             request.setAttribute("reservations", ReservationService.getInstance().findAll());
+            request.setAttribute("clientService", ClientService.getInstance());
+            request.setAttribute("vehicleService", VehicleService.getInstance());
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }

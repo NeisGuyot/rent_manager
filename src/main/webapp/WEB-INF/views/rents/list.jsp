@@ -37,8 +37,8 @@
                                 <tr>
                                     <c:forEach items="${reservations}" var="reservation">
                                         <td>${reservation.id}.</td>
-                                        <td>${reservation.client_id}</td>
-                                        <td>${reservation.vehicule_id}</td>
+                                        <td>${clientService.findById(reservation.client_id).nom} ${clientService.findById(reservation.client_id).prenom}</td>
+                                        <td>${vehicleService.findById(reservation.vehicule_id).constructeur}</td>
                                         <td>${reservation.debut}</td>
                                         <td>${reservation.fin}</td>
                                         <!--<td>John Doe</td>-->
