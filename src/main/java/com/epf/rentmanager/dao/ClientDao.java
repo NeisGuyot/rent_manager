@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.epf.rentmanager.Exception.DaoException;
 import com.epf.rentmanager.model.Client;
-import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
 import org.springframework.stereotype.Repository;
 

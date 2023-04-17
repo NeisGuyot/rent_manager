@@ -53,4 +53,12 @@ public class VehicleService {
 		}
 		return count;
 	}
+
+	public void delete(Vehicle vehicle) throws ServiceException {
+		try {
+			vehicleDao.delete(vehicle);
+		} catch (DaoException daoException) {
+			throw new ServiceException("Problème pour supprimer le véhicule");
+		}
+	}
 }
