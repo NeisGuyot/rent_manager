@@ -1,10 +1,8 @@
 package com.epf.rentmanager.servlet;
 
 import com.epf.rentmanager.Exception.ServiceException;
-import com.epf.rentmanager.model.Vehicle;
-import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ReservationService;
-import com.epf.rentmanager.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -14,11 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
-@WebServlet("/cars/delete")
-public class VehicleDeleteServlet extends HttpServlet {
+@WebServlet("/rents/delete")
+public class ReservationDeleteServlet extends HttpServlet {
     @Autowired
-    VehicleService vehicleService;
+    ReservationService reservationService;
     @Override
     public void init() throws ServletException {
         super.init();
@@ -28,12 +27,12 @@ public class VehicleDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Vehicle vehicle = new Vehicle(Integer.parseInt(request.getParameter("id")),"delete", -99);
-            vehicleService.delete(vehicle);
+            Reservation reservation = new Reservation(Integer.parseInt(request.getParameter("id")),-99, -99, LocalDate.now(), LocalDate.now());
+            reservationService.delete(reservation);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("/rentmanager/cars");
+        response.sendRedirect("/rentmanager/rents");
     }
 
     @Override

@@ -51,4 +51,12 @@ public class ReservationService {
         }
         return count;
     }
+
+    public void delete(Reservation reservation) throws ServiceException {
+        try {
+            reservationDao.delete(reservation);
+        }catch (DaoException daoException){
+            throw new ServiceException("Le client n'a pas été supprimé");
+        }
+    }
 }

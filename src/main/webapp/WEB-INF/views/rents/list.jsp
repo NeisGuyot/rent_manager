@@ -36,7 +36,7 @@
                                 </tr>
                                 <tr>
                                     <c:forEach items="${reservations}" var="reservation">
-                                        <td>${reservation.id}.</td>
+                                        <td>${reservation.id}</td>
                                         <td>${vehicleService.findById(reservation.vehicule_id).constructeur}</td>
                                         <td>${clientService.findById(reservation.client_id).nom} ${clientService.findById(reservation.client_id).prenom}</td>
                                         <td>${reservation.debut}</td>
@@ -49,7 +49,7 @@
                                             <a class="btn btn-success disabled" href="#">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a class="btn btn-danger disabled" href="#">
+                                            <a class="btn btn-danger" href="${pageContext.request.contextPath}/rents/delete?id=${reservation.id}">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>

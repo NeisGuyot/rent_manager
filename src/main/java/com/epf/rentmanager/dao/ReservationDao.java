@@ -48,7 +48,7 @@ public class ReservationDao {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
 					connection.prepareStatement(DELETE_RESERVATION_QUERY);
-			preparedStatement.setLong(1, reservation.getVehicule_id());
+			preparedStatement.setLong(1, reservation.getId());
 
 			return preparedStatement.executeUpdate();
 		} catch (SQLException e) {
