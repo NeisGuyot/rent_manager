@@ -53,4 +53,12 @@ public class ClientService {
 		}
 		return count;
 	}
+
+    public void delete(Client client) throws ServiceException {
+		try {
+			clientDao.delete(client);
+		}catch (DaoException daoException){
+			throw new ServiceException("Problème pour supprimer le client");
+		}
+    }
 }

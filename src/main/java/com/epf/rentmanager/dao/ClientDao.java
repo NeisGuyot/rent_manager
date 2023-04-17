@@ -40,7 +40,7 @@ public class ClientDao {
 		return 0;
 	}
 	
-	public long delete(Client client) throws DaoException {
+	public long delete(Client client) throws DaoException { 	//TODO deleting all cars/rents involving client
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
@@ -49,6 +49,7 @@ public class ClientDao {
 
 			return preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new DaoException();
 		}
 	}

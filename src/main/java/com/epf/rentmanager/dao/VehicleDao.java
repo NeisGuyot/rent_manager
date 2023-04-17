@@ -39,7 +39,7 @@ public class VehicleDao {
 		return 0;
 	}
 
-	public long delete(Vehicle vehicle) throws DaoException {
+	public long delete(Vehicle vehicle) throws DaoException {	//TODO deleting all clients/rents involving vehicle
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
