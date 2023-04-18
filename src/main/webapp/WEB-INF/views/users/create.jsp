@@ -52,14 +52,14 @@
                                     <label for="naissance" class="col-sm-2 control-label">Date de naissance</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="naissance" name="naissance" required
+                                        <input type="text" class="form-control" id="naissance" name="naissance" onchange="validate()" required
                                                data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" onclick="validateAge()">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="addbtn">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -86,7 +86,7 @@
     });
 </script>
 <script>
-function validateAge(){
+function validate(){
     var age = document.getElementById("naissance").value;
     var dob = new Date(age);
     var today = new Date();
@@ -104,7 +104,18 @@ function validateAge(){
     }
     return true;
 }
+    const clientsMailsList = [<c:forEach var="client" items="${clients}">
+                                '${client.mail}',
+                            </c:forEach>];
+    $('#email').on('change',()=>{
+        var lastName = document.getElementById("email").value;
+        if (clientsMailsList.includes(lastName)) {
+            document.getElementById('addbtn').disabled = true;
+            alert('Cette adresse mail existe deja');
+        } else {
+            document.getElementById('addbtn').disabled = false;
+        }
+    });
 </script>
-
 </body>
 </html>

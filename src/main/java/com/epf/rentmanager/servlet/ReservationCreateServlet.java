@@ -2,7 +2,6 @@ package com.epf.rentmanager.servlet;
 
 import com.epf.rentmanager.Exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
-import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.ReservationService;
 import com.epf.rentmanager.service.VehicleService;
@@ -19,7 +18,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @WebServlet("/rents/create")
-public class RservationCreateServlet extends HttpServlet {
+public class ReservationCreateServlet extends HttpServlet {
 
     @Autowired
     VehicleService vehicleService;

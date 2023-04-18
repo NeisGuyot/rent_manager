@@ -2,9 +2,7 @@ package com.epf.rentmanager.servlet;
 
 import com.epf.rentmanager.Exception.ServiceException;
 import com.epf.rentmanager.model.Client;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
-import com.epf.rentmanager.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
@@ -17,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet(name = "ClientDeleteServlet", urlPatterns = "/users/delete")
-public class ClientDeleteServlet extends HttpServlet {
+public class UtilisateurDeleteServlet extends HttpServlet {
     @Autowired
     ClientService clientService;
 
