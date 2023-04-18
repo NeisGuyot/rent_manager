@@ -47,7 +47,7 @@ public class RservationCreateServlet extends HttpServlet {
         int client_id = Integer.valueOf(request.getParameter("client"));
         int vehicule_id = Integer.valueOf(request.getParameter("car"));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
         String beginStr = request.getParameter("begin");
         LocalDate begin = LocalDate.parse(beginStr, formatter);
 
