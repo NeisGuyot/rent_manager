@@ -48,6 +48,7 @@ public class VehicleDao {
 
 			return preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new DaoException();
 		}
 	}
