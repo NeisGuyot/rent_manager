@@ -36,6 +36,7 @@ public class ReservationCreateServlet extends HttpServlet {
         try {
             request.setAttribute("clients", clientService.findAll());
             request.setAttribute("voitures", vehicleService.findAll());
+            request.setAttribute("reservations", reservationService.findAll());
         } catch (ServiceException e) {
             throw new RuntimeException(e);
         }
