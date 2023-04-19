@@ -40,7 +40,7 @@ public class ClientDao {
 		return 0;
 	}
 	
-	public long delete(Client client) throws DaoException { 	//TODO deleting all cars/rents involving client
+	public long delete(Client client) throws DaoException {
 		try {
 			Connection connection = ConnectionManager.getConnection();
 			PreparedStatement preparedStatement =
