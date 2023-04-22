@@ -20,6 +20,7 @@ G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\VehicleDeleteServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\dao\ReservationDao.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\VehicleEditServlet.java
+G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\ReservationEditServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\UtilisateurDetailServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\ReservationListServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\utils\IOUtils.java

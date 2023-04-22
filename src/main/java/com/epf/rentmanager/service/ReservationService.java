@@ -79,4 +79,12 @@ public class ReservationService {
         }
         return ClientId;
     }
+
+    public long update(Reservation reservation) throws ServiceException {
+        try {
+            return reservationDao.update(reservation);
+        } catch (DaoException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
 }
