@@ -5,6 +5,7 @@ G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\persiste
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\service\ReservationService.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\Exception\ServiceException.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\UtilisateurDeleteServlet.java
+G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\UtilisateurEditServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\servlet\VehicleListServlet.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\persistence\FillDatabase.java
 G:\EPF\Algo\Java\4A\TP_2\rent_manager\src\main\java\com\epf\rentmanager\dao\ClientDao.java

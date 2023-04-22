@@ -61,4 +61,11 @@ public class ClientService {
 			throw new ServiceException("Problème pour supprimer le client");
 		}
     }
+	public long update(Client client) throws ServiceException {
+		try {
+			return clientDao.update(client);
+		} catch (DaoException e) {
+			throw new ServiceException("Problème pour mettre à jour le client");
+		}
+	}
 }

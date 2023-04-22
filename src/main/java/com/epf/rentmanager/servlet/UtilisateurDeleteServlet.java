@@ -52,7 +52,6 @@ public class UtilisateurDeleteServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        //request.getParameter("url");
         doGet(request, response);
     }
 }

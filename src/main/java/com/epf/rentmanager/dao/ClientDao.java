@@ -17,7 +17,9 @@ public class ClientDao {
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
 	private static final String FIND_CLIENT_QUERY = "SELECT nom, prenom, email, naissance FROM Client WHERE id=?;";
 	private static final String FIND_CLIENTS_QUERY = "SELECT id, nom, prenom, email, naissance FROM Client;";
-	
+	private static final String EDIT_CLIENT_QUERY = "UPDATE Client SET nom=?, prenom=?, email=?, naissance=? WHERE id=?;";
+
+
 	public long create(Client client) throws DaoException {
 		try {
 			Connection connection = ConnectionManager.getConnection();
@@ -107,6 +109,24 @@ public class ClientDao {
 				clients = resultSet.getInt("total");
 			}
 			return clients;
+		} catch (SQLException e) {
+			throw new DaoException();
+		}
+	}
+
+	public long update(Client client) throws DaoException {
+		try {
+			Connection connection = ConnectionManager.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(EDIT_CLIENT_QUERY);
+			preparedStatement.setString(1, client.getNom());
+			preparedStatement.setString(2, client.getPrenom());
+			preparedStatement.setString(3, client.getMail());
+			preparedStatement.setDate(4, Date.valueOf(client.getNaissance()));
+			preparedStatement.setLong(5, client.getId());
+			long id = preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+			return id;
 		} catch (SQLException e) {
 			throw new DaoException();
 		}
