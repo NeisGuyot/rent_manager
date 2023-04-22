@@ -66,8 +66,15 @@ public class VehicleService {
 		try {
 			return this.vehicleDao.findVehicleByClientId(id);
 		} catch (DaoException e) {
-			e.printStackTrace();
+			throw new ServiceException("Problème pour trouver le véhicule");
 		}
-		return null;
+	}
+
+	public long update(Vehicle vehicle) throws ServiceException {
+		try {
+			return vehicleDao.update(vehicle);
+		} catch (DaoException e) {
+			throw new ServiceException("Problème pour mettre à jour le véhicule");
+		}
 	}
 }
