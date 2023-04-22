@@ -32,6 +32,16 @@ public class ReservationService {
         return reservation;
     }
 
+    public List<Reservation> findResaByVehicleId(long id) throws ServiceException {
+        List<Reservation> VehicleId;
+        try {
+            VehicleId = reservationDao.findResaByVehicleId(id);
+        }catch (DaoException daoException){
+            throw new ServiceException("La reservation n'a pas été trouvée");
+        }
+        return VehicleId;
+    }
+
     public List<Reservation> findAll() throws ServiceException {
         List<Reservation> listReservation;
         try {
@@ -58,5 +68,15 @@ public class ReservationService {
         }catch (DaoException daoException){
             throw new ServiceException("Le client n'a pas été supprimé");
         }
+    }
+
+    public List<Reservation> findResaByClientId(long id) throws ServiceException {
+        List<Reservation> ClientId;
+        try {
+            ClientId = reservationDao.findResaByClientId(id);
+        }catch (DaoException daoException){
+            throw new ServiceException("La reservation n'a pas été trouvée");
+        }
+        return ClientId;
     }
 }

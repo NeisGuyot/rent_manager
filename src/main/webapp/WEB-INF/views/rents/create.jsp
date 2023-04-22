@@ -94,6 +94,10 @@
     });
 </script>
 <script>
+var boo_alert = new Boolean($('#alert').val());
+alert(boo_alert);
+</script>
+<script>
     function verifyDates() {
         const reservations = [
         <c:forEach var="reservation" items="${reservations}">

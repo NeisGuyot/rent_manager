@@ -1,5 +1,6 @@
 package com.epf.rentmanager.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.epf.rentmanager.Exception.DaoException;
@@ -60,5 +61,13 @@ public class VehicleService {
 		} catch (DaoException daoException) {
 			throw new ServiceException("Problème pour supprimer le véhicule");
 		}
+	}
+	public ArrayList<Vehicle> findVehicleByClientId(long id) throws ServiceException {
+		try {
+			return this.vehicleDao.findVehicleByClientId(id);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
