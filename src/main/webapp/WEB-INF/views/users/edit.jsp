@@ -37,13 +37,13 @@
                                 <div class="form-group">
                                     <label for="nom" class="col-sm-2 control-label">Nom</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required value="${user.nom}">
+                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" onchange="validate()" required value="${user.nom}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="prenom" class="col-sm-2 control-label">Prenom</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom" required value="${user.prenom}">
+                                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom" onchange="validate()" required value="${user.prenom}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,14 +56,14 @@
                                     <label for="naissance" class="col-sm-2 control-label">Date de naissance</label>
 
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="naissance" name="naissance" required
+                                        <input type="date" class="form-control" id="naissance" name="naissance" onchange="validate()" required
                                                data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="${user.naissance}">
                                     </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Editer</button>
+                                <button type="submit" class="btn btn-info pull-right" id="addbtn">Editer</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -81,5 +81,42 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script>
+function validate(){
+    var age = document.getElementById("naissance").value;
+    var dob = new Date(age);
+    var today = new Date();
+    var ageInMs = today - dob;
+    var ageInYears = Math.floor(ageInMs / 31557600000);
+    if (ageInYears < 18) {
+        document.getElementById('addbtn').disabled = true;
+        alert("Vous devez avoir plus de 18 ans pour vous inscrire!");
+    } else {
+        document.getElementById('addbtn').disabled = false;
+
+    }
+    var lastName = document.getElementById("nom").value;
+    var firstName = document.getElementById("prenom").value;
+    if (lastName.length < 3 || firstName.length < 3) {
+        document.getElementById('addbtn').disabled = true;
+        alert("Le nom et le prenom doivent comporter au moins 3 caracteres!");
+    } else {
+        document.getElementById('addbtn').disabled = false;
+
+    }
+}
+    const clientsMailsList = [<c:forEach var="client" items="${clients}">
+                                '${client.mail}',
+                            </c:forEach>];
+    $('#email').on('change',()=>{
+        var lastName = document.getElementById("email").value;
+        if (clientsMailsList.includes(lastName)) {
+            document.getElementById('addbtn').disabled = true;
+            alert('Cette adresse mail existe deja');
+        } else {
+            document.getElementById('addbtn').disabled = false;
+        }
+    });
+</script>
 </body>
 </html>

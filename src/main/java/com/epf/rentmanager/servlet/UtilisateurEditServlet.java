@@ -32,6 +32,7 @@ public class UtilisateurEditServlet extends HttpServlet {
         final RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/users/edit.jsp");
         try {
             request.setAttribute("user", clientService.findById(Integer.parseInt(request.getParameter("id"))));
+            request.setAttribute("clients", clientService.findAll());
         } catch (final Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

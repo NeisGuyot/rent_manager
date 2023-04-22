@@ -31,14 +31,14 @@
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Nom">
+                                        <input type="text" class="form-control" id="last_name" name="last_name" onchange="validate()" placeholder="Nom">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="first_name" class="col-sm-2 control-label">Prenom</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Prenom">
+                                        <input type="text" class="form-control" id="first_name" name="first_name" onchange="validate()" placeholder="Prenom">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -93,16 +93,21 @@ function validate(){
     var ageInMs = today - dob;
     var ageInYears = Math.floor(ageInMs / 31557600000);
     if (ageInYears < 18) {
+        document.getElementById('addbtn').disabled = true;
         alert("Vous devez avoir plus de 18 ans pour vous inscrire!");
-        return false;
+    } else {
+        document.getElementById('addbtn').disabled = false;
+
     }
     var lastName = document.getElementById("last_name").value;
     var firstName = document.getElementById("first_name").value;
     if (lastName.length < 3 || firstName.length < 3) {
+        document.getElementById('addbtn').disabled = true;
         alert("Le nom et le prenom doivent comporter au moins 3 caracteres!");
-        return false;
+    } else {
+        document.getElementById('addbtn').disabled = false;
+
     }
-    return true;
 }
     const clientsMailsList = [<c:forEach var="client" items="${clients}">
                                 '${client.mail}',

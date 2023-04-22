@@ -41,11 +41,7 @@
                                         <td>${clientService.findById(reservation.client_id).nom} ${clientService.findById(reservation.client_id).prenom}</td>
                                         <td>${reservation.debut}</td>
                                         <td>${reservation.fin}</td>
-                                        <!--<td>John Doe</td>-->
                                         <td>
-                                            <a class="btn btn-primary disabled" href="rents-detail.html">
-                                                <i class="fa fa-play"></i>
-                                            </a>
                                             <a class="btn btn-success" href="${pageContext.request.contextPath}/rents/edit?id=${reservation.id}">
                                                 <i class="fa fa-edit"></i>
                                             </a>
