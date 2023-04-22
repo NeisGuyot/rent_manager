@@ -22,6 +22,7 @@ public class VehicleDao {
     private static final String FIND_RESERVATIONS_VEHICLE_BY_CLIENT_QUERY =
             "SELECT DISTINCT Vehicle.id, constructeur, nb_places FROM Vehicle " +
             "INNER JOIN Reservation ON Reservation.vehicle_id = Vehicle.id WHERE Reservation.client_id=?;";
+    private static final String EDIT_VEHICLE_QUERY = "UPDATE Vehicle SET constructeur=?, nb_places=? WHERE id=?;";
 
 
     public long create(Vehicle vehicle) throws DaoException {
@@ -127,6 +128,23 @@ public class VehicleDao {
             }
             conn.close();
             return carsList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DaoException();
+        }
+    }
+
+    public long update(Vehicle vehicle) throws DaoException {
+        try {
+            Connection connection = ConnectionManager.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(EDIT_VEHICLE_QUERY);
+            preparedStatement.setString(1, vehicle.getConstructeur());
+            preparedStatement.setLong(2, vehicle.getNb_places());
+            preparedStatement.setLong(3, vehicle.getId());
+            long id = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            connection.close();
+            return id;
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DaoException();

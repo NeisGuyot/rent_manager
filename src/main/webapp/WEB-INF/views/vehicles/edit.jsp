@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Utilisateurs
+                Voitures
             </h1>
         </section>
 
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- Horizontal Form -->
-                    <h4>Edition de l'utilisateur</h4>
+                    <h4>Edition d'un v&eacute;hicule</h4>
                     <div class="box">
                         <form class="form-horizontal" method="post">
                             <div class="box-body">
@@ -31,33 +31,20 @@
                                     <label for="id" class="col-sm-2 control-label">Identifiant</label>
 
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="id" name="id" placeholder="Identifiant" required value="${user.id}" disabled>
+                                        <input type="text" class="form-control" id="id" name="id" placeholder="Identifiant" required value="${vehicle.id}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nom" class="col-sm-2 control-label">Nom</label>
+                                    <label for="manufacturer" class="col-sm-2 control-label">Marque</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required value="${user.nom}">
+                                        <input type="text" class="form-control" id="manufacturer" name="manufacturer" placeholder="Marque" required value="${vehicle.constructeur}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="prenom" class="col-sm-2 control-label">Prenom</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom" required value="${user.prenom}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required value="${user.mail}">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="naissance" class="col-sm-2 control-label">Date de naissance</label>
+                                    <label for="seats" class="col-sm-2 control-label">Nombre de places</label>
 
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="naissance" name="naissance" required
-                                               data-inputmask="'alias': 'dd/mm/yyyy'" data-mask value="${user.naissance}">
+                                        <input type="number" class="form-control" id="seats" name="seats" placeholder="Nombre de places" required value="${vehicle.nb_places}" min=2 max=9 oninvalid="setCustomValidity('Le nombre de places doit etre compris entre 2 et 9.')">
                                     </div>
                                 </div>
                             </div>

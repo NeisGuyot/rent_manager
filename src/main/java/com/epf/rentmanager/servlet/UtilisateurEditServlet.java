@@ -19,11 +19,6 @@ import com.epf.rentmanager.service.ClientService;
 
 @WebServlet("/users/edit")
 public class UtilisateurEditServlet extends HttpServlet {
-    /**
-     *
-     */
-    private static final long serialVersionUID = -4996109534499681501L;
-
     @Autowired
     private ClientService clientService;
 
