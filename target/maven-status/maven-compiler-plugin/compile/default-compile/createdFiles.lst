@@ -1,8 +1,10 @@
 com\epf\rentmanager\servlet\UtilisateurDeleteServlet.class
+com\epf\rentmanager\servlet\UtilisateurDetailServlet.class
 com\epf\rentmanager\servlet\UtilisateurCreateServlet.class
 com\epf\rentmanager\servlet\ReservationCreateServlet.class
 com\epf\rentmanager\servlet\VehicleCreateServlet.class
 com\epf\rentmanager\servlet\UtilisateurListServlet.class
+com\epf\rentmanager\servlet\VehicleDetailServlet.class
 com\epf\rentmanager\servlet\ReservationListServlet.class
 com\epf\rentmanager\servlet\ReservationDeleteServlet.class
 com\epf\rentmanager\servlet\VehicleDeleteServlet.class
